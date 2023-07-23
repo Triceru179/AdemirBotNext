@@ -2,7 +2,6 @@ from bson.json_util import dumps
 import interactions
 import openai
 import config
-import database
 
 openai.api_key = config.OPENAPI_TOKEN
 
@@ -11,24 +10,14 @@ class GptAssistant(interactions.Extension):
         self.client: interactions.Client = client
 
     @interactions.listen()
-    async def on_startup(self):
-        for guild in self.client.guilds:
-            ademir_config = database.obter_config_ademir(guild.id)
-            print("Configurações da Guilda:", dumps(ademir_config))
-    
-    @interactions.listen()
     async def on_message_create(self, message_create: interactions.events.MessageCreate):
         message: interactions.Message = message_create.message        
         if message.client.user.mention in message.content:                
             response = openai.ChatCompletion.create(
                 model=config.CHAT_GPT_MODEL,
-                messages=[{ "role": "user", "content": str.replace(message.content, message.client.user.mention, config.NOME_BOT) }]
+                messages=[{ "role": "user", "content": str.replace(message.content, message.client.user.mention, config.BOT_NAME) }]
                 )
             await message.channel.send(response["choices"][0]["message"]["content"])
-
-    @interactions.slash_command("hello", description="Say hello!")
-    async def hello(self, ctx: interactions.SlashContext):
-        await ctx.send("This command is ran inside an Extension")
 
 def setup(client):
     GptAssistant(client)

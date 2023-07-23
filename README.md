@@ -26,11 +26,12 @@ O projeto "Ademir" é um bot criado para melhorar a experiência de comunidades 
 - [ ] Criar macros através do comando `/macro`
 - [ ] Editar macros: comando `/editar-macro`
 - [ ] Excluir macro: comando `/excluir-macro`
-- [ ] Banir em massa: comando `/massban`
-- [ ] Expulsar em massa: comando `/masskick`
+- [x] Banir em massa: comando `/massban`
+- [x] Expulsar em massa: comando `/masskick`
 - [ ] Importar histórico de mensagens: comando `/importar-historico-mensagens`
 - [ ] Extrair lista de usuarios por atividade no servidor `/usuarios-inativos`
-- [ ] Configurar cargo extra para falar com o bot: comando `/config-cargo-ademir`
+- [x] Configurar cargo extra para falar com o bot: comando `/config-cargo-ademir`
+- [x] Retornar o status do banco de dados [Online | Offline]: comando `/dbstatus`:
 
 ## Comandos de Música
 - [ ] `>>play <link/track/playlist/album>`: Reproduz uma música, playlist ou álbum.
